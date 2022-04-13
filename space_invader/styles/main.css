@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* height: 70%; */
+  display: flex;
+  flex-direction: column;
+  flex: 1; 
+  background-image: url('../assets/space_background.jpeg');
+  font-family: 'Righteous', cursive;
+}
+  /* flex-grow:1; */
+h1 {
+  color: whitesmoke;
+  font-size: 50px;
+}
+.grid-wrapper {
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  align-items: center;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  /* flex-grow: 1; */
+  /* height: 80%;
+  width: 50% */
+  justify-content: center;
+  /* height: 600px; */
+
+}
+
+.grid div {
+  border: 1px solid lightgrey;
+  height: 50px;
+  width: 50px;
+} 
+
+.bomb {
+  background-image: url('../assets/redLaser.jpeg');
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+.alien {
+  background-image: url('../assets/nacho.jpeg');
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+.alien2 {
+  background-image: url('../assets/alien-5.png');
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+.parasite {
+  background-image: url('../assets/parasite.jpeg');
+  background-repeat: no-repeat;
+  background-size: 70%;
+
+}
+
+.spaceship {
+  background-image: url('../assets/spaceship.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.laser {
+  background-image: url('../assets/laser.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.score {
+  font-size: 20px;
+  margin: 0 0 20px 20px;
+  color: whitesmoke;
+}
+
+button {
+  margin: 0 50px;
+  border: solid 2px white;
+  color: white;
+  background-color: green;
+  font-size: 20px;
+}
