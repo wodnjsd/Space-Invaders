@@ -4,29 +4,37 @@
 
 body {
   /* height: 70%; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  flex: 1; 
-  background-image: url('../assets/space_background.jpeg');
+  flex: 1;
+  background-image: url('../assets/wallpaper.jpeg');
+  background-size: cover;
   font-family: 'Righteous', cursive;
 }
   /* flex-grow:1; */
 h1 {
+  text-align: center;
   color: whitesmoke;
   font-size: 50px;
 }
+
 .grid-wrapper {
-  height: 100vh;
-  display: flex;
-  flex: 1;
+  display: center;
+  /* flex: 3; */
   width: 800px;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .grid {
   align-items: center;
-  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
+  /* background-color: aqua; */
+  box-shadow: 
+  1px 1px rgba(0, 0, 0, 0.3), 
+  inset 2px 2px rgba(255, 255, 255, 0.3),
+  2px 2px 3px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-wrap: wrap;
   flex: 1;
@@ -34,39 +42,55 @@ h1 {
   /* height: 80%;
   width: 50% */
   justify-content: center;
+  color: white;
+  /* border: 5px solid whitesmoke; */
   /* height: 600px; */
+  font-size: 35px;
 
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   height: 50px;
   width: 50px;
 } 
 
+.laser {
+  background-image: url('../assets/laser.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .bomb {
-  background-image: url('../assets/redLaser.jpeg');
+  background-image: url('../assets/redLaser.png');
   background-repeat: no-repeat;
   background-size: 50%;
 }
 
 .alien {
-  background-image: url('../assets/nacho.jpeg');
+  background-image: url('../assets/alien-green.png');
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-position: center;
+  background-size: 60%;
 }
 
 .alien2 {
-  background-image: url('../assets/alien-5.png');
+  background-image: url('../assets/alien-blue.png');
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 70%;
 }
 
 .parasite {
-  background-image: url('../assets/parasite.jpeg');
+  background-image: url('../assets/alien-orange.png');
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 70%;
 
+}
+
+.bigAlien {
+  background-color: #7845A4;
 }
 
 .spaceship {
@@ -75,16 +99,13 @@ h1 {
   background-size: contain;
 }
 
-.laser {
-  background-image: url('../assets/laser.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
 .score {
   font-size: 20px;
   margin: 0 0 20px 20px;
   color: whitesmoke;
+  display: flex;
+  justify-content: space-around;
 }
 
 button {
@@ -93,4 +114,8 @@ button {
   color: white;
   background-color: green;
   font-size: 20px;
+  font-family: 'Righteous', cursive;
+  display: inline;
+  float: right;
 }
+

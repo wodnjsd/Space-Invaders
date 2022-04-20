@@ -1,7 +1,7 @@
 //! STILL TO DO- 
-//! 1) Remove laser after hit alien
-//! 2) Moving aliens left and right
-//! 3) Start page 
+//! 1) Start page/ button
+//! 2) Lives x 3
+//! 3) Level
 
 // const rightWall = [15, 31, 47, 63, 79, 95, 111, 127, 143, 159, 175, 191]
 // const aliens = document.querySelectorAll('.alien')
@@ -24,13 +24,7 @@
 // }, 500)
 // })
 
-const intervalId = setInterval(() => {
-  if (numTimesRun === 5) {
-    clearInterval(intervalId)
-  } else {
-    numTimesRun += 1
-  }
-}, 2000)
+
 // - run code for 2 secs then want to clear and switch direction 
 
 
