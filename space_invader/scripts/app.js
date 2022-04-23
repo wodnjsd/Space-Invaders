@@ -4,35 +4,22 @@
 const startButton = document.querySelector('.start')
 
 startButton.addEventListener('click', startGame)
-// const levels = [
-//   { level: 1 }, 
-//   { level: 2 }
-// ]
-// localStorage.setItem('level', levels)
-// let first = true
 
 function startGame() {
-  // const level = Number(localStorage.getItem('level')) || 1
   console.log('hello')
   setInterval(move, 1000)
   document.addEventListener('keydown', killAliens)
   setInterval(dropBomb, 4000)
 }
 
-
-
 // let end = true
 
 function gameOver() {
-  // first = false
-  // if (end === true) {
-    document.querySelector('.grid').innerHTML = 'Game Over!   Your score was: ' + number
-    clearInterval(move)
-    clearInterval(dropBomb)
-    removeAllAliens()
-    removeShip()
-
-  // }
+  document.querySelector('.grid').innerHTML = 'Game Over!   Your score was: ' + number
+  clearInterval(move)
+  clearInterval(dropBomb)
+  removeAllAliens()
+  removeShip()
 }
 
 const nextButton = document.createElement('div')
@@ -54,6 +41,14 @@ function youWin() {
   // grid.innerHTML = ''
 }
 
+const body = document.querySelector('body')
+
+function finalWin() {
+  grid.innerHTML = 'Was too easy anyway'
+  body.classList.add('end')
+  console.log('end')
+}
+
 const grid = document.querySelector('.grid')
 const cells = []
 
@@ -72,21 +67,13 @@ function createGrid() {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
     grid.appendChild(cell)
-    cell.innerHTML =
-    cells.push(cell)
+    // cell.innerHTML =
+      cells.push(cell)
   }
   addShip()
 }
 createGrid()
-// function createGrid2() {
-//   for (let i = 0; i < cellCount; i++) {
-//     const cell = document.createElement('div')
-//     grid.appendChild(cell)
-//     // cell.innerHTML =
-//     cells.push(cell)
-//   }
-//   addShip()
-// }
+
 function removeShip() {
   cells[shipPosition].classList.remove('spaceship')
 }
@@ -322,15 +309,8 @@ const dropBomb = () => {
 nextButton.addEventListener('click', startLevel2)
 
 function startLevel2() {
-
   console.log('hello')
-  first = false
-  // clearInterval(move)
-  // clearInterval(dropBomb)
-  // removeAllAliens()
-  // createGrid()
-  // addShip()
-  nextLevel.innerHTML = ''
+
   addBigAlien()
   setInterval(moveBA, 500)
   document.addEventListener('keydown', killBigAlien)
@@ -363,33 +343,14 @@ function removeBigAlien() {
 }
 
 const moveBA = () => {
-  // const leftWall = bigAlien[12] % width === 0
-  // const rightWall = bigAlien[11] % width === 15
-  const floor = bigAlien[bigAlien.length - 1] / height >= 15
 
   removeBigAlien()
-  // if (rightWall && goingRight) {
-  //   for (let i = 0; i < bigAlien.length; i++) {
-  //     bigAlien[i] += width + 1
-  //     direction = -1
-  //     goingRight = false
-  //   }
-  // }
-  // if (leftWall && !goingRight) {
-  //   for (let i = 0; i < bigAlien.length; i++) {
-  //     bigAlien[i] += width - 1
-  //     direction = 1
-  //     goingRight = true
-  //   }
-  // }
-
   for (let i = 0; i < bigAlien.length; i++) {
     bigAlien[i] += 1
     if (bigAlien[i] / height >= 15) {
       gameOver()
     }
   }
-
   addBigAlien()
 }
 
@@ -412,8 +373,8 @@ function killBigAlien(event) {
         clearInterval(shoot)
         number += 15
       }
-      if (deadBigAlien.length === 47) {
-        youWin()
+      if (deadBigAlien.length === 4) {
+        finalWin()
       }
     }, 500)
     score.innerHTML = "Score: " + number
