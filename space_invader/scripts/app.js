@@ -438,7 +438,7 @@ const dropMoreBomb = () => {
     if (shipPosition === bombPosition) {
       cells[shipPosition].classList.remove('spaceship')
 
-      // return gameOver();
+      return gameOver();
       //!GAMEOVER
     }
     // if (bombPosition > 224) {
