@@ -8,7 +8,8 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-image: url('../assets/wallpaper.jpeg');
+  justify-content: space-around;
+  background-image: url('../assets/background.jpg');
   background-size: cover;
   font-family: 'Righteous', cursive;
 }
@@ -22,7 +23,7 @@ h1 {
 .grid-wrapper {
   display: center;
   /* flex: 3; */
-  width: 800px;
+  width: 580px;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -45,14 +46,14 @@ h1 {
   color: white;
   /* border: 5px solid whitesmoke; */
   /* height: 600px; */
-  font-size: 35px;
+  font-size: 12px;
 
 }
 
 .grid div {
   /* border: 1px solid lightgrey; */
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
 } 
 
 .laser {
@@ -67,31 +68,47 @@ h1 {
   background-size: 50%;
 }
 
+.bigAlien {
+  background-color: #7845A4;
+}
+
+
 .alien {
   background-image: url('../assets/alien-green.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 60%;
+  background-size: 80%;
 }
 
 .alien2 {
   background-image: url('../assets/alien-blue.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 70%;
+  background-size: 80%;
 }
 
 .parasite {
   background-image: url('../assets/alien-orange.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 70%;
+  background-size: 80%;
+
+}
+.pink {
+  background-image: url('../assets/alien-pink.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+
+}
+.turq {
+  background-image: url('../assets/alien-turq.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
 
 }
 
-.bigAlien {
-  background-color: #7845A4;
-}
 
 .spaceship {
   background-image: url('../assets/spaceship.jpeg');
@@ -102,7 +119,6 @@ h1 {
 
 .score {
   font-size: 20px;
-  margin: 0 0 20px 20px;
   color: whitesmoke;
   display: flex;
   justify-content: space-around;
@@ -119,3 +135,6 @@ button {
   float: right;
 }
 
+.end {
+  background-image: url('../assets/rick.png')
+}
