@@ -13,15 +13,10 @@ startButton.addEventListener('click', startGame)
 
 function startGame() {
   // const level = Number(localStorage.getItem('level')) || 1
-
-
   console.log('hello')
-
-  setInterval(move, 600)
+  setInterval(move, 1000)
   document.addEventListener('keydown', killAliens)
-  setInterval(dropBomb, 3000)
-
-
+  setInterval(dropBomb, 4000)
 }
 
 
@@ -41,20 +36,20 @@ function gameOver() {
 }
 
 const nextButton = document.createElement('div')
-nextButton.innerHTML = 'level2'
+nextButton.innerHTML = 'Level 2 Start'
 const nextLevel = document.querySelector('.nextLevel')
 
 function youWin() {
   // first = false
   // end = false
-  document.querySelector('.score').innerHTML = 'You win! Would you like to challenge the boss?'
+  nextLevel.innerHTML = 'You win! Would you like to challenge the boss?'
   nextLevel.appendChild(nextButton)
 
-  // clearInterval(move)
-  // clearInterval(dropBomb)
+  clearInterval(move)
+  clearInterval(dropBomb)
   // removeShip()
   removeAllAliens()
-  deadAliens.splice(0, deadAliens.length)
+  // deadAliens.splice(0, deadAliens.length)
   // cells.splice(0, cells.length)
   // grid.innerHTML = ''
 }
@@ -266,10 +261,10 @@ function killAliens(event) {
       }
       if (deadAliens.length === 50) {
         youWin()
-        clearInterval(move)
-        clearInterval(dropBomb)
+        // clearInterval(move)
+        // clearInterval(dropBomb)
         removeAllAliens()
-        removeShip()
+        // removeShip()
         // first = false
       }
     }, 500)
@@ -334,7 +329,8 @@ function startLevel2() {
   // clearInterval(dropBomb)
   // removeAllAliens()
   // createGrid()
-  addShip()
+  // addShip()
+  nextLevel.innerHTML = ''
   addBigAlien()
   setInterval(moveBA, 500)
   document.addEventListener('keydown', killBigAlien)
@@ -369,7 +365,7 @@ function removeBigAlien() {
 const moveBA = () => {
   // const leftWall = bigAlien[12] % width === 0
   // const rightWall = bigAlien[11] % width === 15
-  const floor = bigAlien[bigAlien.length - 1] / height > 14.95
+  const floor = bigAlien[bigAlien.length - 1] / height >= 15
 
   removeBigAlien()
   // if (rightWall && goingRight) {
@@ -388,11 +384,12 @@ const moveBA = () => {
   // }
 
   for (let i = 0; i < bigAlien.length; i++) {
-    bigAlien[i] += direction
+    bigAlien[i] += 1
+    if (bigAlien[i] / height >= 15) {
+      gameOver()
+    }
   }
-  if (floor) {
-    gameOver()
-  }
+
   addBigAlien()
 }
 

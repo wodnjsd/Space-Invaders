@@ -138,3 +138,10 @@ button {
 .end {
   background-image: url('../assets/rick.png')
 }
+
+.nextLevel {
+  font-size: 20px;
+  color: whitesmoke;
+  text-align: center;
+
+}
