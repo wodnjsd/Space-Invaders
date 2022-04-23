@@ -49,9 +49,6 @@ h1 {
   width: 35px;
 } 
 
-.bigAlien {
-  background-color: #7845A4;
-}
 
 
 .laser {
@@ -104,9 +101,13 @@ h1 {
 
 }
 
+.bigAlien {
+  background-color: #7845A4;
+}
+
 
 .spaceship {
-  background-image: url('../assets/spaceship.jpeg');
+  background-image: url('../assets/spaceship-removebg-preview.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -132,6 +133,10 @@ button {
 
 .end {
   background-image: url('../assets/rick.png')
+}
+
+.gameover {
+  background-image: url('../assets/gameover.jpg')
 }
 
 .nextLevel {

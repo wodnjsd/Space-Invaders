@@ -17,6 +17,7 @@ function gameOver() {
   clearInterval(dropBomb)
   removeAllAliens()
   removeShip() 
+  body.classList.add('gameover')
 }
 
 const nextButton = document.createElement('div')
@@ -28,7 +29,6 @@ function youWin() {
   nextLevel.appendChild(nextButton)
   deadAliens.push('1')
   end = true
-
   clearInterval(move)
   clearInterval(dropBomb)
   removeAllAliens()
@@ -282,7 +282,7 @@ const dropBomb = () => {
         removedBombs.push(cells[bombPosition])
       }
       //   //!GAMEOVER
-    }, 900)
+    }, 700)
   }
 }
 
@@ -330,9 +330,9 @@ const moveBA = () => {
   for (let i = 0; i < bigAlien.length; i++) {
     bigAlien[i] += 1
   }
-  if (floor) {
-    gameOver()
-  }
+  // if (floor) {
+  //   gameOver()
+  // }
   addBigAlien()
 }
 
