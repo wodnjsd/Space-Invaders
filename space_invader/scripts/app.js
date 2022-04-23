@@ -6,20 +6,17 @@ const startButton = document.querySelector('.start')
 startButton.addEventListener('click', startGame)
 
 function startGame() {
-  console.log('hello')
-  setInterval(move, 1000)
+  setInterval(move, 800)
   document.addEventListener('keydown', killAliens)
-  setInterval(dropBomb, 4000)
+  setInterval(dropBomb, 2500)
 }
-
-// let end = true
 
 function gameOver() {
   document.querySelector('.grid').innerHTML = 'Game Over!   Your score was: ' + number
   clearInterval(move)
   clearInterval(dropBomb)
   removeAllAliens()
-  removeShip()
+  removeShip() 
 }
 
 const nextButton = document.createElement('div')
@@ -27,18 +24,14 @@ nextButton.innerHTML = 'Level 2 Start'
 const nextLevel = document.querySelector('.nextLevel')
 
 function youWin() {
-  // first = false
-  // end = false
   nextLevel.innerHTML = 'You win! Would you like to challenge the boss?'
   nextLevel.appendChild(nextButton)
+  deadAliens.push('1')
+  end = true
 
   clearInterval(move)
   clearInterval(dropBomb)
-  // removeShip()
   removeAllAliens()
-  // deadAliens.splice(0, deadAliens.length)
-  // cells.splice(0, cells.length)
-  // grid.innerHTML = ''
 }
 
 const body = document.querySelector('body')
@@ -46,7 +39,6 @@ const body = document.querySelector('body')
 function finalWin() {
   grid.innerHTML = 'Was too easy anyway'
   body.classList.add('end')
-  console.log('end')
 }
 
 const grid = document.querySelector('.grid')
@@ -67,8 +59,8 @@ function createGrid() {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
     grid.appendChild(cell)
-    // cell.innerHTML =
-      cells.push(cell)
+    // cell.innerHTML = 
+    cells.push(cell)
   }
   addShip()
 }
@@ -203,9 +195,8 @@ const move = () => {
       goingRight = true
     }
   }
-  if (floor) {
+  if (floor && end === false) {
     gameOver()
-    // first = false
   }
   for (let i = 0; i < allAliens.length; i++) {
     allAliens[i] += direction
@@ -219,7 +210,6 @@ let number = 0
 
 
 function killAliens(event) {
-  console.log(event.code)
   if (event.code === 'KeyW') {
     const shipPos = document.querySelector('.spaceship')
     let laserPosition = cells.indexOf(shipPos) - width
@@ -244,64 +234,56 @@ function killAliens(event) {
         deadAliens.push(posAlien)
         clearInterval(shoot)
         number += 10
-        console.log(deadAliens)
       }
       if (deadAliens.length === 50) {
         youWin()
-        // clearInterval(move)
-        // clearInterval(dropBomb)
+        clearInterval(dropBomb)
         removeAllAliens()
-        // removeShip()
-        // first = false
       }
     }, 500)
+    if (deadAliens.length === 50) {
+      clearInterval(shoot)
+    }
     score.innerHTML = "Score: " + number
   }
 }
 
+let end = false 
 
 // function dropBomb
 const removedBombs = []
 const dropBomb = () => {
-
   function randomAlien(allAliens) {
-    let numbers = allAliens[Math.floor(Math.random() * allAliens.length)]
-    if (numbers > allAliens.length * (2 / 3)) {
-      return numbers
-      // console.log(numbers)
-    }
+    let numbers = allAliens[(Math.floor(Math.random() * allAliens.length))]
+    return numbers
   }
 
-  let bombPosition = randomAlien(allAliens)
-  bombPosition += width
-  console.log(bombPosition)
-  if ((bombPosition < cells.length) && (!(removedBombs.includes(bombPosition)))) {
-    cells[bombPosition].classList.add('bomb')
-  }
-  setInterval(() => {
+  if (end === true) {
+    return
+  } else {
+  
+    let bombPosition = randomAlien(allAliens)
     if ((bombPosition < cells.length) && (!(removedBombs.includes(bombPosition)))) {
-
-      cells[bombPosition].classList.remove('bomb')
-      bombPosition += width
-      if ((bombPosition < cells.length) && (!(removedBombs.includes(bombPosition)))) {
-        cells[bombPosition].classList.add('bomb')
-      }
-      if (shipPosition === bombPosition) {
-        cells[shipPosition].classList.remove('spaceship')
-        return gameOver()
-      }
-    } else if (bombPosition > cells.length) {
-      cells[bombPosition].classList.remove('bomb')
-      removedBombs.push(cells[bombPosition])
-      clearInterval(dropBomb)
+      cells[bombPosition].classList.add('bomb')
     }
+    setInterval(() => {
+      if ((bombPosition < cells.length) && (!(removedBombs.includes(bombPosition)))) {
 
-
-    //   //!GAMEOVER
-
-
-  }, 900)
-
+        cells[bombPosition].classList.remove('bomb')
+        bombPosition += width
+        if ((bombPosition < cells.length) && (!(removedBombs.includes(bombPosition)))) {
+          cells[bombPosition].classList.add('bomb')
+        }
+        if (shipPosition === bombPosition && end === false) {
+          cells[shipPosition].classList.remove('spaceship')
+          return gameOver()
+        }
+      } else if (bombPosition > cells.length) {
+        removedBombs.push(cells[bombPosition])
+      }
+      //   //!GAMEOVER
+    }, 900)
+  }
 }
 
 //! level 2
@@ -309,8 +291,7 @@ const dropBomb = () => {
 nextButton.addEventListener('click', startLevel2)
 
 function startLevel2() {
-  console.log('hello')
-
+  nextLevel.innerHTML = ''
   addBigAlien()
   setInterval(moveBA, 500)
   document.addEventListener('keydown', killBigAlien)
@@ -343,19 +324,19 @@ function removeBigAlien() {
 }
 
 const moveBA = () => {
+  const floor = bigAlien[bigAlien.length - 1] / height >= 15
 
   removeBigAlien()
   for (let i = 0; i < bigAlien.length; i++) {
     bigAlien[i] += 1
-    if (bigAlien[i] / height >= 15) {
-      gameOver()
-    }
+  }
+  if (floor) {
+    gameOver()
   }
   addBigAlien()
 }
 
 function killBigAlien(event) {
-  console.log(event.code)
   if (event.code === 'KeyW') {
     const shipPos = document.querySelector('.spaceship')
     let laserPosition = cells.indexOf(shipPos) - width
@@ -373,24 +354,21 @@ function killBigAlien(event) {
         clearInterval(shoot)
         number += 15
       }
-      if (deadBigAlien.length === 4) {
+      if (deadBigAlien.length === 46) {
         finalWin()
       }
     }, 500)
     score.innerHTML = "Score: " + number
   }
 }
-
+// console.log(bigAlien.length)
 const dropMoreBomb = () => {
 
   function randomAlien(bigAlien) {
-    let numbers = bigAlien[Math.floor(Math.random() * bigAlien.length)]
-    if (numbers > bigAlien.length * (5 / 6)) {
-      return numbers
-    }
+    let numbers = bigAlien[(Math.floor(Math.random() * bigAlien.length))]
+    return numbers
   }
   let bombPosition = randomAlien(bigAlien)
-  bombPosition += width
   cells[bombPosition].classList.add('bomb')
   setInterval(() => {
     cells[bombPosition].classList.remove('bomb')
@@ -402,9 +380,6 @@ const dropMoreBomb = () => {
       return gameOver();
       //!GAMEOVER
     }
-    // if (bombPosition > 224) {
-    //   cells[bombPosition].classList.remove('bomb')
-    // }
   }, 500)
 }
 

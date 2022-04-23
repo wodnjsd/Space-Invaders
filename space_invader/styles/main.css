@@ -3,7 +3,6 @@
 }
 
 body {
-  /* height: 70%; */
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,7 +12,7 @@ body {
   background-size: cover;
   font-family: 'Righteous', cursive;
 }
-  /* flex-grow:1; */
+
 h1 {
   text-align: center;
   color: whitesmoke;
@@ -39,22 +38,21 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   flex: 1;
-  /* flex-grow: 1; */
-  /* height: 80%;
-  width: 50% */
   justify-content: center;
   color: white;
-  /* border: 5px solid whitesmoke; */
-  /* height: 600px; */
-  font-size: 12px;
+  font-size: 20px;
 
 }
 
 .grid div {
-  /* border: 1px solid lightgrey; */
   height: 35px;
   width: 35px;
 } 
+
+.bigAlien {
+  background-color: #7845A4;
+}
+
 
 .laser {
   background-image: url('../assets/laser.png');
@@ -68,16 +66,13 @@ h1 {
   background-size: 50%;
 }
 
-.bigAlien {
-  background-color: #7845A4;
-}
 
 
 .alien {
   background-image: url('../assets/alien-green.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 80%;
+  background-size: 70%;
 }
 
 .alien2 {
