@@ -1,6 +1,5 @@
 // * Dom Elements
 
-
 const startButton = document.querySelector('.start')
 
 startButton.addEventListener('click', startGame)
@@ -59,7 +58,6 @@ function createGrid() {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
     grid.appendChild(cell)
-    // cell.innerHTML = 
     cells.push(cell)
   }
   addShip()
@@ -70,7 +68,7 @@ function removeShip() {
   cells[shipPosition].classList.remove('spaceship')
 }
 
-//move Spaceship()
+//Move Spaceship
 
 document.addEventListener('keydown', (event) => {
   const key = event.code
@@ -207,7 +205,6 @@ const move = () => {
 
 //Shoot and kill aliens
 let number = 0
-
 
 function killAliens(event) {
   if (event.code === 'KeyW') {
@@ -361,7 +358,7 @@ function killBigAlien(event) {
     score.innerHTML = "Score: " + number
   }
 }
-// console.log(bigAlien.length)
+
 const dropMoreBomb = () => {
 
   function randomAlien(bigAlien) {

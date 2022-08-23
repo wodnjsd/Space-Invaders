@@ -20,6 +20,8 @@ Once the player has destroyed a wave of aliens, the game starts again. The aim i
 * The player should be able to clear at least one wave of aliens
 * The player's score should be displayed at the end of the game
 
+  ![Screenshot](/assets/screenshot.png)
+
 
 ## Approach:
 * Created grid by starting with an empty array of 'cells'
@@ -47,13 +49,15 @@ Once the player has destroyed a wave of aliens, the game starts again. The aim i
 * Start button starts the intervals of the bombs and aliens and also the event listener to shoot laser 
 
 
-## Challenges:
+## Challenges/ known bugs:
 - Clearing grid when moving onto level 2
 - Getting bombs to be removed as shows errors in console once they are at bottom of grid
 - Getting aliens to change direction when they hit the side walls (atm is when the original most lateral alien hits even when they are removed)
+- Sometimes there is a lag when the alien is hit so that the score adds up more slowly and even when all the aliens are removed from the grid it doesn't immediately come up with the next screen 
 
 
 ## Future improvements:
-- Getting start again button when the player dies
+- Having a 'start again' button when the player dies
+- Add lives so that the player has more than one chance to complete the game
 
 ## Lessons learned:
